@@ -1,6 +1,6 @@
 export const BaseInfo = {
-  name: "Sajal",
-  position: "Full Stack Web Developer",
+  name: "Ashik Ahammed Hridoy",
+  position: "Full Stack Software Developer",
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit porro numquam ad, vero consequuntur aperiam cumque voluptatum pariatur veniam? Qui facilis est ipsam odio cum!",
   profilePic: "/images/hero.png",
