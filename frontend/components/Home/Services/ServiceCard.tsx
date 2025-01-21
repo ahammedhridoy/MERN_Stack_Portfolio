@@ -14,7 +14,7 @@ type Props = {
 
 const ServiceCard = ({ service }: Props) => {
   return (
-    <Tilt className="shadow-2xl p-6 rounded-lg bg-[#814ced]">
+    <Tilt className="shadow-2xl p-6 rounded-lg bg-[--light-blue]">
       <Image
         src={`${service.icon}`}
         alt={service.title}

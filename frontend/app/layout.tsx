@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="custom-scrollbar">
-      <body className={font.className}>
+      <body className={font.className} style={{ position: "relative" }}>
         <div className="hidden md:block">
           <AnimatedCursor
             innerSize={8}

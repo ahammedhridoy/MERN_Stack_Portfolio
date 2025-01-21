@@ -1,32 +1,59 @@
+import { IoHome } from "react-icons/io5";
+import { IoIosInformationCircle } from "react-icons/io";
+import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { GrProjects } from "react-icons/gr";
+import { MdReviews } from "react-icons/md";
+import { MdContacts } from "react-icons/md";
+import { FaBrain } from "react-icons/fa";
+import { RiArticleFill } from "react-icons/ri";
+
 export const navLinks = [
   {
-    id: 1,
+    id: "home",
     url: "#",
     label: "Home",
+    icon: IoHome,
   },
   {
-    id: 2,
+    id: "about",
     url: "#",
     label: "About",
+    icon: IoIosInformationCircle,
   },
   {
-    id: 3,
+    id: "services",
     url: "#",
     label: "Services",
+    icon: MdOutlineMiscellaneousServices,
   },
   {
-    id: 4,
+    id: "projects",
     url: "#",
     label: "Projects",
+    icon: GrProjects,
   },
   {
-    id: 5,
+    id: "skills",
+    url: "#",
+    label: "Skills",
+    icon: FaBrain,
+  },
+  {
+    id: "reviews",
     url: "#",
     label: "Reviews",
+    icon: MdReviews,
   },
   {
-    id: 6,
+    id: "blogs",
+    url: "#",
+    label: "Blogs",
+    icon: RiArticleFill,
+  },
+  {
+    id: "contacts",
     url: "#",
     label: "Contacts",
+    icon: MdContacts,
   },
 ];

@@ -4,11 +4,15 @@
 
 @layer components {
   .nav__link {
-    @apply relative text-base font-medium w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-yellow-400 text-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right
+    @apply relative text-base font-medium w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-blue-800 text-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right;
   }
 
   .text-bg {
-    background-image: linear-gradient(to right, #8750f7 0%, #ffffff 100%);
+    background-image: linear-gradient(
+      to right,
+      rgb(30 64 175) 0%,
+      #ffffff 100%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -20,12 +24,29 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #44028f;
+    background: var(--light-blue);
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #c277fa;
+    background: var(--blue);
     border-radius: 4px;
   }
+}
 
+/* Global CSS */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --blue: rgb(30 64 175);
+  --dark-blue: #060922;
+  --light-blue: #080339;
+  --dark-black: #121426;
 }

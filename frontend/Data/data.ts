@@ -1,19 +1,24 @@
 export const BaseInfo = {
   name: "Ashik Ahammed Hridoy",
   position: "Full Stack Software Developer",
-  description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit porro numquam ad, vero consequuntur aperiam cumque voluptatum pariatur veniam? Qui facilis est ipsam odio cum!",
-  profilePic: "/images/hero.png",
+  description: `Expert in building full-stack web applications using
+MongoDB, Express.js, React js, Next js, and Node.js.
+Proficient in RESTful API development, database
+management, and server-side development. I am also
+an expert at creating WordPress websites. Able to
+troubleshoot, deploy, and stay current with the latest
+technologies and best practices.`,
+  profilePic: "/images/ashik.jpg",
+  resume: "../files/Ashik_Hridoy.pdf",
 };
 
 export const aboutInfo = {
-  title: "Crafting Web Application with Passion and Precision",
-  description:
-    "At webdev warriors, we’re a dedicated team of designers and developers committed to delivering tailored web solutions. With a blend of creativity and technical expertise, we help businesses elevate their online presence and achieve their goals",
-  client: "50+",
+  title: "Building Digital Solutions with Expertise and Creativity",
+  description: `I specialize in crafting innovative and user-friendly applications. Combining technical precision with creative design, I deliver personalized solutions that help individuals and businesses thrive in the digital world. Let’s bring your ideas to life with passion and purpose!`,
+  client: "30+",
   experience: "3+",
-  project: "200+",
-  website: "100+",
+  project: "100+",
+  website: "60+",
 };
 
 export const servicesData = [
