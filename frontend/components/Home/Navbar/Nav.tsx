@@ -39,13 +39,15 @@ const Nav = ({ openNav }: Props) => {
     >
       <div className="flex items-center h-full justify-between w-[95%] sm:w-[90%] xl:w-[80%] mx-auto">
         {/* LOGO */}
-        <Image
-          src="/images/logo.png"
-          alt="LOGO"
-          width={170}
-          height={170}
-          className="ml-[-1.5rem] sm:ml-0"
-        />
+        <Link href={`/`}>
+          <Image
+            src="/images/ashik_logo.png"
+            alt="LOGO"
+            width={60}
+            height={60}
+            className="ml-[-1.5rem] sm:ml-0"
+          />
+        </Link>
         {/* Nav Links */}
         <div className="flex items-center space-x-10">
           {/* <div className="hidden lg:flex items-center space-x-8">

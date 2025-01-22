@@ -8,7 +8,7 @@ management, and server-side development. I am also
 an expert at creating WordPress websites. Able to
 troubleshoot, deploy, and stay current with the latest
 technologies and best practices.`,
-  profilePic: "/images/ashik.jpg",
+  profilePic: "/images/ashik_pro.jpg",
   resume: "../files/Ashik_Hridoy.pdf",
 };
 
@@ -24,55 +24,45 @@ export const aboutInfo = {
 export const servicesData = [
   {
     id: 1,
-    title: " Web Applications",
-    description: "Tailored web apps built with the latest technologies.",
-    icon: "/images/s1.png",
+    title: "Web Applications",
+    description:
+      "Crafting responsive, scalable, and feature-rich web applications tailored to your unique business needs.",
+    icon: "/images/web.png",
   },
   {
     id: 2,
-    title: "E-commerce Websites",
+    title: "Mobile Applications",
     description:
-      "Secure online stores with user-friendly shopping and payments.",
-    icon: "/images/s2.png",
+      "Designing intuitive and high-performance mobile apps to provide seamless user experiences on the go.",
+    icon: "/images/mobile.png",
   },
   {
     id: 3,
     title: "API Integration",
     description:
-      "Seamless integration for smooth data sharing and functionality.",
-    icon: "/images/s3.png",
+      "Connecting your applications with third-party services for enhanced functionality and streamlined workflows.",
+    icon: "/images/api.png",
   },
   {
     id: 4,
-    title: "User Interfaces",
+    title: "Database Integration",
     description:
-      "Engaging, responsive front-end designs for better user experiences.",
-    icon: "/images/s4.png",
+      "Building secure, efficient, and scalable database solutions to ensure smooth data storage and management.",
+    icon: "/images/database.png",
   },
   {
     id: 5,
-    title: "Database Solutions",
+    title: "WordPress Website",
     description:
-      "Efficient and scalable database management for your data needs.",
-    icon: "/images/s5.png",
+      "Creating customizable and SEO-friendly WordPress websites to help you establish a strong online presence with ease.",
+    icon: "/images/wordpress.png",
   },
   {
     id: 6,
-    title: "Real-Time Features",
-    description: "Add live chat, notifications, and real-time data updates.",
-    icon: "/images/s6.png",
-  },
-  {
-    id: 7,
-    title: "Speed Optimization",
-    description: "Boost performance with faster load times and optimization.",
-    icon: "/images/s7.png",
-  },
-  {
-    id: 8,
-    title: "Website Management",
-    description: "Easy content management systems with flexible controls.",
-    icon: "/images/s8.png",
+    title: "Shopify Website",
+    description:
+      "Building professional and user-friendly Shopify websites to create seamless eCommerce experiences and drive sales.",
+    icon: "/images/shopify.png",
   },
 ];
 
@@ -81,139 +71,254 @@ export const projectData = [
     id: 1,
     image: "/images/p1.png",
     url: "https://agency-opal-eight.vercel.app/",
+    github: "https://github.com/",
+    title: "Agency",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 2,
     image: "/images/p2.png",
     url: "https://burger-pearl.vercel.app/",
+    github: "https://github.com/",
+    title: "Burger",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 3,
     image: "/images/p3.png",
     url: "https://game-ecommerce-yt.vercel.app/",
+    github: "https://github.com/",
+    title: "Game",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 4,
     image: "/images/p4.png",
     url: "https://elearning-yt.vercel.app/",
+    github: "https://github.com/",
+    title: "Elearning",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 5,
     image: "/images/p5.png",
     url: "https://invest-peach.vercel.app/",
+    github: "https://github.com/",
+    title: "Invest",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 6,
     image: "/images/p6.png",
     url: "https://job-chi-ruby.vercel.app/",
+    github: "https://github.com/",
+    title: "Job",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 7,
     image: "/images/p7.png",
     url: "https://wdw-ecom.vercel.app/",
+    github: "https://github.com/",
+    title: "Wdw",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
   {
     id: 8,
     image: "/images/p8.png",
     url: "https://webhost-ten.vercel.app/",
+    github: "https://github.com/",
+    title: "Webhost",
+    stack: [
+      "Next js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Express js",
+      "React js",
+      "Node js",
+    ],
   },
 ];
 
 export const skillsData = [
   {
     id: 1,
-    title: "React",
-    image: "/images/react.svg",
-    percent: "90%",
+    title: "HTML",
+    image: "/images/html.svg",
   },
   {
     id: 2,
     title: "CSS",
     image: "/images/css.svg",
-    percent: "97%",
   },
   {
     id: 3,
     title: "JavaScript",
     image: "/images/js.svg",
-    percent: "77%",
   },
   {
     id: 4,
-    title: "TypeScript",
-    image: "/images/ts.svg",
-    percent: "67%",
+    title: "Bootstrap",
+    image: "/images/bootstrap.png",
   },
   {
     id: 5,
-    title: "HTML",
-    image: "/images/html.svg",
-    percent: "67%",
+    title: "Tailwind CSS",
+    image: "/images/tailwind.png",
   },
   {
     id: 6,
-    title: "Node JS",
-    image: "/images/node.svg",
-    percent: "77%",
+    title: "React",
+    image: "/images/react.svg",
   },
   {
     id: 7,
-    title: "MongoDB",
-    image: "/images/mongo.svg",
-    percent: "65%",
+    title: "Next JS",
+    image: "/images/nextjs.png",
   },
   {
     id: 8,
-    title: "Python",
-    image: "/images/python.svg",
-    percent: "55%",
+    title: "TypeScript",
+    image: "/images/ts.svg",
   },
   {
     id: 9,
-    title: "Firebase",
-    image: "/images/firebase.svg",
-    percent: "75%",
+    title: "React Native",
+    image: "/images/reactnative.png",
   },
   {
     id: 10,
-    title: "Vue",
-    image: "/images/vue.svg",
-    percent: "35%",
+    title: "Node JS",
+    image: "/images/node.svg",
+  },
+  {
+    id: 11,
+    title: "Express JS",
+    image: "/images/express.png",
+  },
+  {
+    id: 12,
+    title: "MongoDB",
+    image: "/images/mongo.svg",
+  },
+  {
+    id: 13,
+    title: "MySQL",
+    image: "/images/mysql.png",
+  },
+  {
+    id: 14,
+    title: "Wordpress",
+    image: "/images/wordpress.png",
+  },
+  {
+    id: 15,
+    title: "Shopify",
+    image: "/images/shopify.png",
   },
 ];
 
 export const clientReviews = [
   {
-    name: "John Doe",
-    review:
-      "Exceptional service! The team delivered exactly what we needed on time. Very professional",
+    id: 1,
+    name: "Aisalmahdi",
+    review: "Great to work with.",
     rating: 5,
-    profession: "Marketing Manager",
-    image: "/images/u1.jpg",
+    profession: "From Fiverr",
   },
   {
-    name: "Jane Smith",
-    review:
-      "Highly skilled developers who understand the client's vision and execute perfectly.",
+    id: 2,
+    name: "Ralive",
+    review: "Best wordpress developer. Hire him without worries.",
     rating: 4.8,
-    profession: "Business Owner",
-    image: "/images/u2.jpg",
+    profession: "From Fiverr",
   },
   {
-    name: "Michael Johnson",
+    id: 3,
+    name: "Teamdc0999",
     review:
-      "Great communication and excellent results. Our new site performs beautifully.",
+      "Good website design. He follows instructions to make sure customer is satisfied.",
     rating: 4.6,
-    profession: "Project Coordinator",
-    image: "/images/u3.jpg",
+    profession: "From Fiverr",
   },
   {
-    name: "Emily Brown",
+    id: 4,
+    name: "Aisalmahdi",
+    review: "Great great guy who works hard.",
+    rating: 5,
+    profession: "From Fiverr",
+  },
+  {
+    id: 5,
+    name: "Dilshan",
     review:
-      "Professional, efficient, and highly knowledgeable. Would definitely recommend their services!",
-    rating: 4.9,
-    profession: "Creative Director",
-    image: "/images/u4.jpg",
+      "Thank you very much, Ashik, for your dedication to the project. It is commendable that you have been responsive to feedback, but there is still room for improvement in terms of code efficiency and design elements. ",
+    rating: 5,
+    profession: "From Upwork",
+  },
+  {
+    id: 6,
+    name: "Aisalmahdi",
+    review: "Good work thank you.",
+    rating: 4,
+    profession: "From Fiverr",
+  },
+  {
+    id: 7,
+    name: "Shahane",
+    review:
+      "Ashik is a very good developer & learned new skilles throug out my project quickly. He also submitted my project without any delay!",
+    rating: 5,
+    profession: "From Upwork",
   },
 ];
 
@@ -245,7 +350,7 @@ export const blogs = [
 ];
 
 export const contactData = {
-  phone: "+88(012345 789)",
-  email: "example@gmail.com",
+  phone: "+880 (01762790050)",
+  email: "developerhridoy@gmail.com",
   address: "Dhaka , Bangladesh",
 };

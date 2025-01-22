@@ -47,6 +47,6 @@ body {
 :root {
   --blue: rgb(30 64 175);
   --dark-blue: #060922;
-  --light-blue: #080339;
+  --light-blue: rgb(23 37 84);
   --dark-black: #121426;
 }
