@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 export const connectDB = async () => {
-  const url = process.env.MONGO_URI;
+  const url = process.env.DATABASE_URL;
   return mongoose
     .connect(url, {
       useNewUrlParser: true,

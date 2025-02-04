@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url"; // Import this function
 import { connectDB } from "./Helper/database.js";
+import { AuthRouter } from "./routes/AuthRoute.js";
 
 dotenv.config();
 
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 connectDB();
 
 // Define API routes
+app.use("/api/v1/auth", AuthRouter);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
