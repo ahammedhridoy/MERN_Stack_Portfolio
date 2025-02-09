@@ -9,10 +9,10 @@ import { Prisma } from "../Helper/prismaClient.js";
  * API: /api/v1/auth/register
  */
 export const register = async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password } = req.body;
 
   // Validate user input
-  if (!email || !password || !name || !role) {
+  if (!email || !password || !name) {
     return res.status(400).json({ message: "Please enter all fields" });
   }
 
@@ -32,7 +32,6 @@ export const register = async (req, res) => {
       email,
       password: hashedPassword,
       name,
-      role,
     };
 
     const user = await Prisma.user.create({ data });
