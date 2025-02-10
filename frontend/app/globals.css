@@ -44,6 +44,25 @@ body {
   scroll-behavior: smooth;
 }
 
+.inputCss {
+  color: white !important;
+  background-color: var(--dark-black) !important;
+  border: 1px solid var(--dark-black) !important;
+  border-radius: 5px !important;
+  outline: none !important;
+  caret-color: white !important;
+  padding: 10px !important;
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 10px 0 !important;
+}
+
+.inputCss::placeholder {
+  color: white;
+}
+
 :root {
   --blue: rgb(30 64 175);
   --dark-blue: #060922;
