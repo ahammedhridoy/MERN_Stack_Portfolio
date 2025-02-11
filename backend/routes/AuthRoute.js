@@ -1,5 +1,10 @@
 import expres from "express";
-import { login, register } from "../controllers/AuthController.js";
+import {
+  authorized,
+  login,
+  register,
+  verifyUser,
+} from "../controllers/AuthController.js";
 
 export const AuthRouter = expres.Router();
 
@@ -8,3 +13,6 @@ AuthRouter.post("/register", register);
 
 // POST /api/v1/auth/login
 AuthRouter.post("/login", login);
+
+// POST /api/v1/auth/verify
+AuthRouter.post("/verify", verifyUser, authorized);

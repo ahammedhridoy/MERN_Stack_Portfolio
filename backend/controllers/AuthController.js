@@ -69,9 +69,9 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    const { accessToken, accessTokenExp } = await generateToken(user);
+    const { accessToken, refreshToken } = await generateToken(user);
 
-    if (!accessToken || !accessTokenExp)
+    if (!accessToken || !refreshToken)
       throw new Error("Failed to generate tokens.");
     // Remove sensitive data
     const { password: _, ...userWithoutPassword } = user;
@@ -81,19 +81,20 @@ export const login = async (req, res) => {
       cookie.serialize("accessToken", accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: accessTokenExp,
+        maxAge: 60,
         path: "/",
       }),
-      cookie.serialize("accessTokenExp", accessTokenExp.toString(), {
+
+      cookie.serialize("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: accessTokenExp,
+        maxAge: 300,
         path: "/",
       }),
+
       cookie.serialize("user", JSON.stringify(userWithoutPassword), {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: accessTokenExp,
         path: "/",
       }),
     ]);
@@ -102,11 +103,79 @@ export const login = async (req, res) => {
       message: "Login successful",
       user: userWithoutPassword,
       accessToken,
-      accessTokenExp,
+      refreshToken,
       isAuthenticated: true,
     });
   } catch (error) {
     console.error("Error logging in:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
+};
+
+// Verify User
+export const verifyUser = async (req, res, next) => {
+  try {
+    let token =
+      req.cookies?.accessToken ||
+      (req.headers.authorization && req.headers.authorization.split(" ")[1]);
+
+    if (!token || token.split(".").length !== 3) {
+      return await renewToken(req, res, next);
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    console.error("Error verifying token:", error.message);
+    return res.status(401).json({ message: "Unauthorized: Invalid token" });
+  }
+};
+
+// Renew Token
+export const renewToken = async (req, res, next) => {
+  try {
+    const refreshToken = req.cookies?.refreshToken;
+
+    if (!refreshToken) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized: Missing refresh token" });
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+
+    const { accessToken, refreshToken: newRefreshToken } = await generateToken(
+      decoded
+    );
+
+    res.setHeader("Set-Cookie", [
+      cookie.serialize("accessToken", accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60, // 1 minute
+        path: "/",
+      }),
+
+      cookie.serialize("refreshToken", newRefreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 300, // 5 minutes
+        path: "/",
+      }),
+    ]);
+
+    req.user = decoded;
+    next();
+  } catch (error) {
+    console.error("Error renewing token:", error);
+    return res
+      .status(401)
+      .json({ message: "Unauthorized: Invalid refresh token" });
+  }
+};
+
+// Authorized
+export const authorized = async (req, res) => {
+  res.status(200).json({ message: "Authorized" });
 };

@@ -46,8 +46,6 @@ const LoginForm = () => {
 
       if (res?.status === 200) {
         toast.success("Login successfully!");
-        localStorage.setItem("user", JSON.stringify(res?.data?.user));
-        localStorage.setItem("accessToken", res?.data?.accessToken);
         window.location.href = "/dashboard";
       }
     } catch (error: any) {

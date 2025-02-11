@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// Generate Token
 export const generateToken = async (user) => {
   try {
     const payload = {
@@ -8,12 +9,14 @@ export const generateToken = async (user) => {
     };
 
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "365d",
+      expiresIn: "1m",
     });
 
-    const accessTokenExp = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 365;
+    const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
+      expiresIn: "5m",
+    });
 
-    return { accessToken, accessTokenExp };
+    return { accessToken, refreshToken };
   } catch (error) {
     console.error("Error generating tokens:", error);
     throw new Error("Failed to generate tokens.");
