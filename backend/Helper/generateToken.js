@@ -13,7 +13,7 @@ export const generateToken = async (user) => {
     });
 
     const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
-      expiresIn: "5m",
+      expiresIn: "7d",
     });
 
     return { accessToken, refreshToken };

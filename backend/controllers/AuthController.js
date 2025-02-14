@@ -5,6 +5,12 @@ import jwt from "jsonwebtoken";
 import { Prisma } from "../Helper/prismaClient.js";
 import { generateToken } from "../Helper/generateToken.js";
 import cookie from "cookie";
+import {
+  invalidateToken,
+  sendPasswordResetEmail,
+  updatePassword,
+  validateTokenAndGetEmail,
+} from "../Helper/utils.js";
 
 /**
  * METHOD: POST
@@ -88,7 +94,7 @@ export const login = async (req, res) => {
       cookie.serialize("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 300,
+        maxAge: 60 * 60 * 24 * 7,
         path: "/",
       }),
 
@@ -112,7 +118,10 @@ export const login = async (req, res) => {
   }
 };
 
-// Verify User
+/**
+ * METHOD: POST
+ * API: /api/v1/auth/verify
+ */
 export const verifyUser = async (req, res, next) => {
   try {
     let token =
@@ -130,6 +139,11 @@ export const verifyUser = async (req, res, next) => {
     console.error("Error verifying token:", error.message);
     return res.status(401).json({ message: "Unauthorized: Invalid token" });
   }
+};
+
+// Authorized
+export const authorized = async (req, res) => {
+  res.status(200).json({ message: "Authorized" });
 };
 
 // Renew Token
@@ -175,7 +189,101 @@ export const renewToken = async (req, res, next) => {
   }
 };
 
-// Authorized
-export const authorized = async (req, res) => {
-  res.status(200).json({ message: "Authorized" });
+/**
+ * METHOD: POST
+ * API: /api/v1/auth/logout
+ */
+export const logout = async (req, res) => {
+  try {
+    res.setHeader("Set-Cookie", [
+      cookie.serialize("accessToken", "", {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 0,
+        path: "/",
+      }),
+      cookie.serialize("refreshToken", "", {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 0,
+        path: "/",
+      }),
+      cookie.serialize("user", "", {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 0,
+        path: "/",
+      }),
+    ]);
+
+    return res.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    console.error("Error logging out:", error);
+    res.status(500).json({ message: "An error occurred during logout" });
+  }
+};
+
+/**
+ * METHOD: POST
+ * API: /api/v1/auth/forgot-password
+ */
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(404).json({ message: "No email found!" });
+  try {
+    // Check if the email exists in the database
+    const user = await Prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const encoded = jwt.sign({ email }, process.env.JWT_SECRET, {
+      expiresIn: "5min",
+    });
+
+    await Prisma.resetToken.create({
+      data: {
+        email,
+        token: encoded,
+      },
+    });
+
+    // Send password reset email
+    await sendPasswordResetEmail(email, encoded, user?.name);
+
+    res.status(200).json({ message: "Password reset email sent", encoded });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error on forgot password" });
+  }
+};
+
+/**
+ * METHOD: POST
+ * API: /api/v1/auth/reset-password
+ */
+export const resetPassword = async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  if (!token || !newPassword) {
+    return res
+      .status(400)
+      .json({ message: "Please provide both token and new password" });
+  }
+
+  try {
+    const email = await validateTokenAndGetEmail(token);
+    if (!email) {
+      return res.status(400).json({ error: "Invalid or expired token" });
+    }
+
+    await updatePassword(email, newPassword);
+    await invalidateToken(token);
+
+    return res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error resetting password" });
+  }
 };

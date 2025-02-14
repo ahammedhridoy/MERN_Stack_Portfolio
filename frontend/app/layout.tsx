@@ -1,20 +1,17 @@
+"use client";
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
 import ResponsiveNav from "@/components/Home/Navbar/ResponsiveNav";
 import Footer from "@/components/Home/Footer/Footer";
 import ScrollToTop from "@/components/Helper/ScrollToTop";
-import AnimatedCursor from "react-animated-cursor";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const font = Sora({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "Webdev Portfolio",
-  description: "Webdev portfolio with next js",
-};
 
 export default function RootLayout({
   children,
@@ -24,25 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="custom-scrollbar">
       <body className={font.className} style={{ position: "relative" }}>
-        <div className="hidden md:block">
-          <AnimatedCursor
-            innerSize={8}
-            outerSize={35}
-            innerScale={2}
-            outerScale={2}
-            outerAlpha={0}
-            innerStyle={{
-              backgroundColor: "white",
-            }}
-            outerStyle={{
-              border: "3px solid white",
-            }}
-          />
-        </div>
-        <ResponsiveNav />
-        {children}
-        <Footer />
-        <ScrollToTop />
+        <Provider store={store}>
+          <ResponsiveNav />
+          {children}
+          <Footer />
+          <ScrollToTop />
+        </Provider>
       </body>
     </html>
   );
