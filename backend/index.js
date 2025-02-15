@@ -7,6 +7,10 @@ import path from "path";
 import { fileURLToPath } from "url"; // Import this function
 import { connectDB } from "./Helper/database.js";
 import { AuthRouter } from "./routes/AuthRoute.js";
+import { BlogRouter } from "./routes/BlogRoute.js";
+import { ProjectRouter } from "./routes/ProjectRoute.js";
+import { SkillRouter } from "./routes/SkillRoute.js";
+import { ReviewRouter } from "./routes/ReviewRoute.js";
 
 dotenv.config();
 
@@ -50,6 +54,10 @@ connectDB();
 
 // Define API routes
 app.use("/api/v1/auth", AuthRouter);
+app.use("/api/v1/blog", BlogRouter);
+app.use("/api/v1/project", ProjectRouter);
+app.use("/api/v1/skill", SkillRouter);
+app.use("/api/v1/review", ReviewRouter);
 
 // Start the server
 const PORT = process.env.PORT || 5000;

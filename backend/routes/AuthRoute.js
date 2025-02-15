@@ -1,4 +1,4 @@
-import expres from "express";
+import express from "express";
 import {
   authorized,
   forgotPassword,
@@ -9,10 +9,10 @@ import {
   verifyUser,
 } from "../controllers/AuthController.js";
 
-export const AuthRouter = expres.Router();
+export const AuthRouter = express.Router();
 
 // POST /api/v1/auth/register
-AuthRouter.post("/register", register);
+AuthRouter.post("/register", verifyUser, register);
 
 // POST /api/v1/auth/login
 AuthRouter.post("/login", login);

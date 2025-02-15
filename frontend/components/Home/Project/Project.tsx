@@ -38,15 +38,13 @@ const Project = () => {
               className="bg-blue-950 p-6 rounded-lg hover:scale-105 transition-all duration-300"
             >
               {/* Project Image */}
-              <Link href={project.url} target="_blank">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={300}
-                  height={200}
-                  className="w-full"
-                />
-              </Link>
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={300}
+                height={300}
+                className="w-full h-[400px] object-cover rounded-md"
+              />
 
               {/* Project Title */}
               <p className="text-xl mt-4 line-clamp-2 text-white">
@@ -77,22 +75,26 @@ const Project = () => {
               {/* Project Links */}
               <div className="flex items-center justify-end gap-4 mt-4">
                 {project.url && (
-                  <Image
-                    src="/images/webicon.png"
-                    alt="Website"
-                    width={30}
-                    height={30}
-                    className="hover:scale-110 transition-all duration-300 w-[30px] h-[30px]"
-                  />
+                  <Link href={project.url} target="_blank">
+                    <Image
+                      src="/images/webicon.png"
+                      alt="Website"
+                      width={30}
+                      height={30}
+                      className="hover:scale-110 transition-all duration-300 w-[30px] h-[30px]"
+                    />
+                  </Link>
                 )}
                 {project.github && (
-                  <Image
-                    src="/images/github.png"
-                    alt="GitHub"
-                    width={30}
-                    height={30}
-                    className="hover:scale-110 transition-all duration-300 w-[35px] h-[35px]"
-                  />
+                  <Link href={project.github} target="_blank">
+                    <Image
+                      src="/images/github.png"
+                      alt="GitHub"
+                      width={30}
+                      height={30}
+                      className="hover:scale-110 transition-all duration-300 w-[35px] h-[35px]"
+                    />
+                  </Link>
                 )}
               </div>
             </div>

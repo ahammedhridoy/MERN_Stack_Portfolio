@@ -29,6 +29,19 @@ const Footer = () => {
         </Link>
 
         <Link
+          href={"https://www.threads.net/@ashik_ahammed_hridoy"}
+          target="_blank"
+        >
+          <Image
+            src="/images/threads.png"
+            alt="logo"
+            width={50}
+            height={50}
+            className="mx-auto p-2 bg-[--light-blue] rounded-full hover:scale-105 transition-all duration-300 cursor-pointer mt-4"
+          />
+        </Link>
+
+        <Link
           href={"https://www.instagram.com/ashik_ahammed_hridoy/"}
           target="_blank"
         >
