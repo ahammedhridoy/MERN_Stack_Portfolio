@@ -9,7 +9,7 @@ import {
 
 export const ReviewRouter = express.Router();
 
-// *POST /api/v1/review/create
+// POST /api/v1/review/create
 ReviewRouter.post("/create", verifyUser, createReview);
 
 // GET /api/v1/review/all

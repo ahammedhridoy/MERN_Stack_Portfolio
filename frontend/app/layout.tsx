@@ -22,7 +22,6 @@ export default function RootLayout({
     <html lang="en" className="custom-scrollbar">
       <body className={font.className} style={{ position: "relative" }}>
         <Provider store={store}>
-          <ResponsiveNav />
           {children}
           <Footer />
           <ScrollToTop />

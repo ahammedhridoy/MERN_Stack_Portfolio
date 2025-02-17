@@ -1,4 +1,5 @@
 import Home from "@/components/Home/Home";
+import ResponsiveNav from "@/components/Home/Navbar/ResponsiveNav";
 import { Metadata } from "next";
 import React from "react";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 const HomePage = () => {
   return (
     <div>
+      <ResponsiveNav />
       <Home />
     </div>
   );

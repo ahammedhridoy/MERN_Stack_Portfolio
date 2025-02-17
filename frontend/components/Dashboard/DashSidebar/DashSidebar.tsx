@@ -32,11 +32,12 @@ const DashSidebar = () => {
   const links = [
     { name: "Dashboard Overview", path: "/dashboard" },
     { name: "Blogs", path: "/dashboard/manage-blog" },
-    { name: "Projects", path: "/dashboard/manage-product" },
+    { name: "Projects", path: "/dashboard/manage-project" },
+    { name: "Services", path: "/dashboard/manage-service" },
+    { name: "Skills", path: "/dashboard/manage-skill" },
+    { name: "Reviews", path: "/dashboard/manage-review" },
+    { name: "Logo", path: "/dashboard/update-logo" },
     { name: "Settings", path: "/dashboard/settings" },
-    { name: "Update Logo", path: "/dashboard/update-logo" },
-    { name: "Update About", path: "/dashboard/update-about" },
-    { name: "Update Contact", path: "/dashboard/update-contact" },
   ];
 
   return (
@@ -48,7 +49,9 @@ const DashSidebar = () => {
             <Link
               href={link.path}
               className={`block px-4 py-2 rounded ${
-                pathname === link.path ? "bg-gray-700" : "hover:bg-gray-600"
+                pathname === link.path
+                  ? "bg-[--blue]"
+                  : "hover:bg-[--dark-black]"
               }`}
             >
               {link.name}
@@ -56,7 +59,10 @@ const DashSidebar = () => {
           </li>
         ))}
         <li onClick={userLogout}>
-          <Link href={""} className="block px-4 py-2 rounded hover:bg-gray-600">
+          <Link
+            href={""}
+            className="block px-4 py-2 rounded hover:bg-[--dark-black]"
+          >
             {loading ? "Loading..." : "Logout"}
           </Link>
         </li>
