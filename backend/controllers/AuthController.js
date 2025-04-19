@@ -172,7 +172,7 @@ export const renewToken = async (req, res, next) => {
       cookie.serialize("refreshToken", newRefreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 300, // 5 minutes
+        maxAge: 60 * 60 * 24 * 7, // 7 days
         path: "/",
       }),
     ]);

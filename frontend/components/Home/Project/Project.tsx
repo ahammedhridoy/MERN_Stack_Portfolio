@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/Helper/SectionHeading";
 import { projectData } from "@/Data/data";
+import { useGetAllProjectQuery } from "@/services/projectData";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -23,6 +24,9 @@ const techIcons = [
 ];
 
 const Project = () => {
+  const { data, isLoading } = useGetAllProjectQuery();
+  console.log(data);
+
   return (
     <section id="projects">
       <div className="pt-16 pb-16 bg-[--dark-black] min-h-screen">

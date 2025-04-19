@@ -31,11 +31,11 @@ const ProtectedRoute = ({ children }: DashboardLayoutProps) => {
         if (response?.ok) {
           setIsAuthorized(true);
         } else {
-          router.push("/login");
+          router.push("/");
         }
       } catch (error) {
         console.error("Error verifying user:", error);
-        router.push("/login");
+        router.push("/");
       } finally {
         setLoading(false);
       }
