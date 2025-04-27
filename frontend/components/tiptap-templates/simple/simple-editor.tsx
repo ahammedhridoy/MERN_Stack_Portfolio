@@ -176,7 +176,12 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor() {
+interface SimpleEditorProps {
+  value?: string;
+  onChange?: (value: string) => void;
+}
+
+export function SimpleEditor({ value, onChange }: SimpleEditorProps) {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
@@ -240,11 +245,24 @@ export function SimpleEditor() {
         upload: handleImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
+
       TrailingNode,
       Link.configure({ openOnClick: false }),
     ],
-    // content: content,
+    content: value || content,
+    onUpdate: ({ editor }) => {
+      if (onChange) {
+        onChange(editor.getHTML());
+      }
+    },
   });
+
+  // Add effect to update editor content when value prop changes
+  React.useEffect(() => {
+    if (editor && value && editor.getHTML() !== value) {
+      editor.commands.setContent(value);
+    }
+  }, [value, editor]);
 
   React.useEffect(() => {
     const checkCursorVisibility = () => {

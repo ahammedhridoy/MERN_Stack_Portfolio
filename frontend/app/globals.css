@@ -99,6 +99,14 @@ body {
   background-color: gray !important;
 }
 
+.single-project-description li {
+  list-style-type: disc;
+}
+
+.single-project-description ol li {
+  list-style-type: decimal;
+}
+
 /* TipTap */
 @keyframes fadeIn {
   from {

@@ -5,10 +5,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 interface Project {
   id: number;
   title: string;
-  price: number;
   description: string;
-  category: string;
   image: string;
+  url: string;
+  github: string;
+  stack: string[];
 }
 
 export const projectApi = createApi({
@@ -28,8 +29,27 @@ export const projectApi = createApi({
       query: (project) => ({
         url: "/project/create",
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: project,
+        credentials: "include",
+        formData: true,
+      }),
+    }),
+    // Update Project
+    updateProject: builder.mutation<Project, Project>({
+      query: (project) => ({
+        url: `/project/${project.id}`,
+        method: "PATCH",
+        body: project,
+        credentials: "include",
+        formData: true,
+      }),
+    }),
+    // Delete Project
+    deleteProject: builder.mutation<Project, number>({
+      query: (id) => ({
+        url: `/project/${id}`,
+        method: "DELETE",
+        credentials: "include",
       }),
     }),
   }),
@@ -40,4 +60,6 @@ export const {
   useGetAllProjectQuery,
   useGetSingleProjectQuery,
   useCreateProjectMutation,
+  useUpdateProjectMutation,
+  useDeleteProjectMutation,
 } = projectApi;

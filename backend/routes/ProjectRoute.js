@@ -7,11 +7,17 @@ import {
   getSingleProject,
   updateProject,
 } from "../controllers/ProjectController.js";
+import { upload } from "../Helper/multer.js";
 
 export const ProjectRouter = express.Router();
 
 // POST /api/v1/project/create
-ProjectRouter.post("/create", verifyUser, createProject);
+ProjectRouter.post(
+  "/create",
+  verifyUser,
+  upload.single("image"),
+  createProject
+);
 
 // GET /api/v1/project/all
 ProjectRouter.get("/all", getAllProjects);

@@ -7,6 +7,7 @@ import Footer from "@/components/Home/Footer/Footer";
 import ScrollToTop from "@/components/Helper/ScrollToTop";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
+import Nav from "@/components/Home/Navbar/Nav";
 
 const font = Sora({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className="custom-scrollbar">
       <body className={font.className} style={{ position: "relative" }}>
         <Provider store={store}>
+          {/* <Nav openNav={() => {}} /> */}
           {children}
           <Footer />
           <ScrollToTop />

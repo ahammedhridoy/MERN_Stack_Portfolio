@@ -1,4 +1,3 @@
-// "use client";
 import SectionHeading from "@/components/Helper/SectionHeading";
 import usePagination from "@/hooks/usePagination";
 import { useGetAllProjectQuery } from "@/services/projectData";
@@ -42,19 +41,17 @@ const techIcons = [
   { key: "shopify", src: "/images/shopify.png", alt: "Shopify" },
 ];
 
-const Project = () => {
+const ShowAllProject = () => {
   const { data, isLoading } = useGetAllProjectQuery<ProjectResponse>();
-  const { visibleCount, loadMore } = usePagination(18, 6);
+  const { visibleCount, loadMore } = usePagination(18, 9);
 
   if (isLoading) {
     return <div className="text-center text-white py-10">Loading...</div>;
   }
 
   return (
-    <section id="projects">
-      <div className="pt-16 pb-16 bg-[--dark-black] min-h-screen">
-        <SectionHeading>My Projects</SectionHeading>
-
+    <section>
+      <div className="min-h-screen">
         <div className="w-[80%] mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-center">
           {data?.projects
             ?.slice(0, visibleCount)
@@ -64,7 +61,7 @@ const Project = () => {
                 data-aos-anchor-placement="top-center"
                 data-aos-delay={`${i * 150}`}
                 key={project.id}
-                className="bg-blue-950 p-6 rounded-lg hover:scale-105 transition-all duration-300"
+                className="bg-blue-950 p-6 rounded-lg "
               >
                 {/* Project Image */}
                 <Link href={`/projects/${project.id}`}>
@@ -150,4 +147,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default ShowAllProject;

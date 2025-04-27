@@ -34,7 +34,7 @@ const LoginForm = () => {
     }
 
     try {
-      const res = await axiosPublic.post(`/api/v1/auth/login`, {
+      const res = await axiosPublic.post(`/auth/login`, {
         email,
         password,
       });
